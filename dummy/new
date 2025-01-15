@@ -1,3 +1,6 @@
 first line
 Second Commit
-Third line
+<<<<<<< HEAD
+second line
+====
+parent of 943ce23 (Revert "first")
