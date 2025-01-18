@@ -1,0 +1,109 @@
+
+Introduction to DevOps
+SDLC (Software Development Life Cycle):
+The SDLC is a process for building software, packages, and applications.
+
+SDLC Models:
+1. Waterfall Model:
+   - A traditional, linear software development methodology.
+   - Follows a sequential process:
+     1. Requirement Gathering and Analysis
+     2. Design/Planning/Architecture
+     3. Implementation/Coding/Development
+     4. Testing
+     5. Release/Delivery/Deployment
+     6. Maintenance/Monitoring/Feedback
+
+   Limitations:
+   - Unsuitable for complex projects where frequent changes are needed.
+   - Time-consuming as each stage must be completed before moving to the next.
+   - No flexibility to revisit previous stages.
+
+2. Agile Model:
+   - The project is divided into iterations called sprints (2–8 weeks).
+   - At the end of each iteration, a Minimum Viable Product (MVP) is delivered.
+
+   Limitations:
+   - Miscommunication between teams.
+   - Configuration changes can create deployment challenges for the operations team.
+
+What is DevOps?
+DevOps bridges the gap between development and operations, addressing the limitations of Agile methodology.
+
+Without DevOps Culture:
+- Release and deployment mismatches.
+- Unpredictable issues.
+- Blame games between teams.
+
+With DevOps Culture:
+- Streamlined deliveries.
+- Collaboration between teams.
+- Elimination of blame games.
+
+Key Points:
+- DevOps is not a role, person, or separate team.
+- DevOps is not just about tools or writing scripts.
+- DevOps is a practice that integrates development, testing, deployment, and monitoring into a unified lifecycle.
+
+What Does DevOps Do?
+- Integrates development and operations teams.
+- Enhances collaboration and productivity through automation.
+- Continuously measures application performance and automates workflows.
+
+Skills of a DevOps Engineer:
+1. Technical Tools:
+   - Version Control: Git
+   - Continuous Integration/Delivery (CI/CD): Jenkins
+   - Containerization: Docker
+   - Configuration Management: Ansible, Chef
+   - Monitoring: Prometheus, Grafana
+
+2. Networking Skills:
+   - Establish connections between containers or manage container orchestration.
+
+3. Soft Skills:
+   - Communication, teamwork, and customer service.
+
+DevOps Lifecycle:
+1. Plan:
+   - Visualize, track, and summarize your project.
+   - Examples: Jira, Trello
+
+2. Code:
+   - Developers write the code.
+   - Examples: Git, GitHub, Bitbucket
+
+3. Build:
+   - Build pre-release versions of software.
+   - Examples: Apache, Maven
+
+4. Test:
+   - Automated testing to identify risks and issues early.
+   - Examples: JUnit, Selenium, JMeter
+
+5. Release:
+   - Integrate code into a shared repository for error detection.
+   - Examples: Bamboo, GitLab, Jenkins
+
+6. Deploy:
+   - Manage deployment in various environments.
+   - Examples: AWS, Chef, Ansible
+
+7. Operations:
+   - Keep systems updated with the latest features.
+   - Examples: AWS, Ansible, Chef
+
+8. Monitoring:
+   - Ensure application performance and stability. Identify issues quickly.
+   - Examples: Prometheus, Grafana, Splunk
+
+Additional Information:
+- DevOps Objectives:
+   - Speed up software delivery without compromising quality.
+   - Reduce manual errors by automating repetitive tasks.
+   - Foster a culture of collaboration between teams.
+
+- DevOps Tools Ecosystem:
+   - CI/CD Pipeline: Jenkins, GitLab CI/CD
+   - Container Orchestration: Kubernetes, OpenShift
+   - Cloud Platforms: AWS, Azure, Google Cloud Platform
