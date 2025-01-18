@@ -1,0 +1,164 @@
+
+Git Notes:
+
+
+~>. WHAT IS VERSION CONTROL:
+
+	- Version control is a system that tracks file changes over time, enabling collaboration, rollback, and maintaining a project 			history. It ensures efficient teamwork, avoids data loss, and supports workflows like branching and merging.
+
+
+~>. VERSION CONTROL SYSTEM (VCS):
+
+	1. WHY USE A VERSION CONTROL SYSTEM?
+
+   		- For collaboration, storing versions, tracking changes, and backups.
+   		- Issues without VCS:
+     			* Permanent, unpreventable changes.
+     			* No record of who made what changes.
+     			* Downtime due to faulty updates can result in significant losses.
+
+	2. WHAT IS VERSION CONTROL:
+
+  		- Tracks changes to files, allowing multiple users to manage versions of the same project.
+   		- Acts as a snapshot of the project over time.
+
+
+~>. TYPES OF VERSION CONTROL:
+
+	1. LOCAL VERSION CONTROL SYSTEM (LVCS):
+
+   		- Version database resides on the local computer.
+   		- Records changes locally.
+   		- Issue: Limited to individual users; not suitable for team projects.
+
+	2. CENTRALIZED VERSION CONTROL SYSTEM (CVCS):
+
+   		- Resolves LVCS issues by maintaining a central repository.
+   		- Users can check in and check out files from anywhere.
+   		- Issue: Central server failure affects the whole system.
+
+	3. DISTRIBUTED VERSION CONTROL SYSTEM (DVCS):
+
+   		- Stores version database locally and on a remote server.
+   		- Allows users to manipulate local files and upload changes.
+   		- Provides redundancy as any client server can restore the system.
+
+
+~>. WHAT IS GIT:
+
+   	- Open-source DVCS for tracking changes in files.
+   	- Focuses on speed, data integrity, and distributed, non-linear workflows.
+
+
+~>. GIT WORKFLOW:
+
+	1. CLONE			: Copy a remote repository locally.
+	2. WORKING COPY		: Active directory where changes are made.
+	3. STAGING AREA		: Prepares files for committing.
+	4. LOCAL REPOSITORY	: Stores committed changes.
+	5. PUSH			: Upload changes to the remote repository.
+	6. FETCH			: Pulls updates from the remote repository.
+
+
+~>. HOW TO CHANGE THE DEFAULT BRANCH NAME?
+	
+	# Remote Repository -> Settings -> General -> Default Branch
+
+
+~>. HOW TO DELETE REPOSITORY?
+
+	# Remote Repository -> General -> Danger Zone -> Delete this Respository.
+
+
+~> HOW TO CONFIG GITHUB TO GIT?
+
+	# git config --global user.name "your name".
+	
+	# git config --global user.email "your email".
+
+
+~>. BASIC GIT COMMANDS:
+
+	1. git clone <repo link> - Clone a remote repository locally.
+	2. git add <file> - Add changes to the staging area.
+	3. git commit -m "message" - Commit changes with a message.
+	4. git push -u origin <branch> - Push local changes to a remote repository.
+	5. git status - Check the status of files (tracked/untracked).
+	6. git branch - List branches or create/delete a branch.
+	7. git switch <branch> - Switch between branches.
+	8. git stash - Temporarily save changes.
+	9. git log - View commit history.
+
+
+~>. ADVANCED GIT FEATURES:
+
+	1. Fork: Copy a repository to experiment without affecting the original.
+	2. Merge: Join the development histories of different branches.
+	3. Revert: Undo specific commits using commit ID.
+	4. Reset: Unstage or undo changes to files.
+	5. Amend: Modify the last commit message or changes.
+
+
+~>. HOW TO CREATE A NEW BRANCH, SWITCH BRANCH, LIST OUT THE BRANCHES?
+
+	# git branch   				=  	It lists all branches in your repository.
+	# git branch "branch name"  		= 	It creates a new branch.
+	# git switch "branch name"  		= 	It switches to the specified branch.
+	# git checkout "branch name"  	= 	It switches to another branch or restores files.
+
+
+~>. HOW TO DELETE A BRANCH IN LOCAL AND REMOTE REPOSITORY?
+	
+	# git branch -d "branch name"  = It is used to delete a branch in local.
+	# git push origin --delete "branch name" = It is used to delete a branch from a remote repository.
+
+
+~> WHILE PUSHING A FILE TO NEW BRANCH FOR THE FIRST TIME:
+	
+	# git push --set-upstream origin "branch name"  = This command connects your local branch to a remote branch and pushes changes for the first time.
+
+
+~> WHILE PUSHING A FILE TO OLD BRANCH:
+
+	# git push -u origin "branch name"  = It is used to push your local branch to the remote repository named origin and set it to track the remote branch.
+
+~> HOW TO PAUSE AND RESUME THE WORK?
+
+	# git stash  		= 	This command temporarily saves your uncommitted changes, allowing you to revert your working directory to the last commit.
+	# git stash list 	= 	You can view all saved stashes.
+	# git stash pop 		= 	It is used to resume the work in working directory, what ever we stashed before.
+
+
+~>. BRANCHING STRATEGIES:
+
+	1. Main/Master
+	2. Dev
+	3. Release: To prepare a new version.
+	4. Feature: Separate branch for new features.
+	5. Hotfix: Quick fixes for production issues.
+
+
+~>. Useful Commands:
+
+	1. git diff <commit1> <commit2> - Compare changes between commits.
+	2. git restore <file> - Restore a file from the staging area.
+	3. git push --delete <branch> - Delete a remote branch.
+
+
+~>. Changing Commit Messages:
+
+	-> git commit --amend -m "new message": Modify the most recent commit message.
+
+
+~>. Interview Scenarios:
+
+	1. How to amend a commit message.
+	2. Handling merge conflicts or reverting changes.
+
+
+Key Takeaways:
+
+	- Git enables efficient team collaboration.
+	- Proper branching strategies reduce conflicts.
+	- Commit often and document changes for better tracking.
+
