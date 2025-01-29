@@ -1,0 +1,159 @@
+
+
+# Maven Notes
+
+## 1). What is Maven?
+	- Maven is a tool used for compiling, validating code, and analyzing test cases in the code.
+	- It manages the building process, repositories, and documentation from source control management (SCM).
+	- Maven projects are configured through the **Project Object Model (POM)**.
+	- The `pom.xml` file contains documentation for objects, properties, methods, and events.
+
+
+## 2). What is Maven Capable of?
+	- Centralizes project information.
+	- Models software projects.
+	- Manages the build process.
+	- Gathers data about the software project and the build itself.
+	- Documents the software and the project.
+	- Generates deployable artifacts from the source code.
+	- Compiles, tests, and distributes source code.
+	- Creates a project website.
+
+
+## 3). Maven Build Lifecycle
+	- The Maven build process follows a predefined and ordered set of steps called the **Build Lifecycle**.
+	- The tasks performed during each phase are determined by the project file configuration.
+	- Maven uses the **Build Lifecycle** to define the process of building and distributing artifacts (e.g., JAR, WAR).
+
+
+	### Three Types of Build Lifecycle:
+
+		1. **Default** - Handles project building and deployment.
+		2. **Clean** - Cleans project files.
+		3. **Site** - Generates project site documentation.
+
+
+## 4). Maven Architecture
+
+	Plug-in (1), Plug-in (2), Plug-in (3), Plug-in (n)
+
+                  	(Core Engine)
+
+	[Remote Repositories]       [Local Repositories]
+  	Organization Level        	   Local Machine
+
+
+## 5). Maven Artifacts
+
+	- An artifact is a file resulting from packaging a project.
+	- Can be a `.jar`, `.war`, `.ear`, or `.xml` file.
+	- Artifacts are stored in repositories for use as dependencies in other projects.
+
+
+	### Artifact Identification:
+
+		1. **Group ID** - A unique identifier for a group of related artifacts (e.g., `com.example`).
+		2. **Artifact ID** - A unique identifier for the project (e.g., `hello world`).
+		3. **Version** - Specifies the release or build number.
+
+
+## 6). Maven Repository Flow  
+
+      Remote Repository                    
+            | (Step 2)  
+            v                        
+      Local Repository ---------> Developer (Step 4) 
+        | (Step 1)                      ^   
+        | (Step 3)                      |
+        v                               |
+      Remote Repository ----------------
+
+
+	### Steps:
+		1. When the developer runs `mvn` command, Maven first checks for dependencies in the local repository.
+		2. If not found, it searches in the remote repository.
+		3. The required dependency is downloaded from the remote repository and stored locally.
+		4. The developer retrieves dependencies from the local repository.
+
+
+## 7). Project Object Model (POM)
+	- **POM.xml** is an XML file located at the root of the project.
+	- It includes configuration for:
+  		- Project information.
+  		- Build configuration details.
+  		- Default project values (e.g., `source.dir`, `target.dir`).
+  		- Plugin and goal configurations.
+  		- Used repositories.
+
+
+## 8). Declaring Dependencies
+	- While declaring dependencies, the artifact coordinates must be provided:
+  		- **Group ID** - Unique identifier for artifact groups.
+  		- **Artifact ID** - Unique identifier for an artifact within a group.
+  		- **Version** - Identifies the release/build number.
+
+
+## 9). Maven Installation
+
+	### Prerequisites:
+		- Windows system with internet access.
+		- Administrator privileges.
+		- Java installed with the `JAVA_HOME` environment variable set.
+
+	### Steps:
+		1. Download the Maven zip file and extract it.
+		2. Add `MAVEN_HOME` as a system variable.
+		3. Add the `MAVEN_HOME/bin` directory to the system path.
+
+	### Checking Installation:
+		Run the command:
+		
+			mvn -version
+		
+		If successful, it will display the installed Maven version.
+
+
+## 10). Maven Lifecycle Phases:
+
+	1. **Validate** - Checks if the project has all necessary information.  
+   	
+   		mvn validate
+   	
+	2. **Compile** - Compiles the source code.  
+   
+ 		mvn compile
+   
+	3. **Test** - Runs unit tests without packaging or deployment.  
+   		
+   		mvn test
+   
+	4. **Package** - Packages compiled code into a distributable format (e.g., JAR, WAR).  
+   
+   		mvn package
+   
+	5. **Integration Test** - Deploys and runs integration tests.  
+   
+   		mvn integration-test
+   
+	6. **Verify** - Runs verification tests on the package.  
+   
+   		mvn verify
+   
+	7. **Install** - Installs the package into the local repository for reuse.  
+   
+   		mvn install
+   
+	8. **Deploy** - Deploys the final package to a remote repository for sharing.  
+   
+   		mvn deploy
+   
+
+## 11). .m2 Folder
+
+	- The `.m2` folder is the local repository of Apache Maven.
+
+## 12). Maven Lifecycle Execution
+
+	- Running a later lifecycle phase includes executing all previous phases automatically.
+	- Example: Running `mvn package` executes `validate`, `compile`, and `test` as well.
+
