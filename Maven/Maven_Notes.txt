@@ -151,6 +151,7 @@
 ## 11). .m2 Folder
 
 	- The `.m2` folder is the local repository of Apache Maven.
+	- The .m2 folder in Maven is the local repository where Maven stores all downloaded dependencies, plugins, and other artifacts to avoid fetching them repeatedly from remote 	repositories.
 
 ## 12). Maven Lifecycle Execution
 
