@@ -1,0 +1,157 @@
+APACHE TOMCAT
+=============
+
+	-Apache Tomcat is an open-source web server and servlet container for Java-based applications.
+	-It implements the Java Servlet, JavaServer Pages (JSP), and WebSocket technologies.
+
+
+Prerequisites
+-------------
+
+	- Java JRE (Java Runtime Environment) must be installed and configured.
+	- Administrator Privileges are required for installation and configuration.
+
+
+Installation Methods on Windows
+------------------------------
+
+	1. **Via Windows Service Installer** (Recommended for beginners, automated installation)
+	2. **From a Zip Archive** (Manual installation)
+
+
+How to Install Tomcat on Windows
+--------------------------------
+
+	### Step 1: Download Apache Tomcat
+
+		- Go to the [Apache Tomcat website](https://tomcat.apache.org/)
+		- Locate and download the latest 64-bit Windows zip file.
+
+	### Step 2: Install Apache Tomcat
+
+		#### **Using Windows Service Installer:**
+			- Run the downloaded `.exe` installer file.
+			- Follow the on-screen instructions in the installation wizard.
+			- Choose the components, set credentials, and configure the HTTP port (default: 8080).
+
+		#### **Using ZIP Archive:**
+
+			- Right-click the downloaded `.zip` file and select "Extract All".
+			- Navigate to the extracted Apache Tomcat folder.
+			- Set environment variables if needed (e.g., `CATALINA_HOME`).
+
+		### Configuring Tomcat Port
+			- By default, Tomcat runs on port `8080`.
+			- To change the port number:
+ 				- Open `conf/server.xml` in the Tomcat directory.
+  				- Locate the following configuration:
+
+  				```xml
+  					<Connector port="8080" protocol="HTTP/1.1"
+             			connectionTimeout="2000"
+             			redirectPort="8443" />
+  				```
+
+  			- Change `port="8080"` to any available port between `1024-65535`.
+  			- Save and restart Tomcat.
+
+
+*************************************
+Flowchart: Tomcat Installation Process
+--------------------------------------
+           +--------------------+
+           |  	   Start       |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Download Tomcat   |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Extract Files     |
+           |  (if using ZIP)    |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Run Installer     |
+           |  (if using EXE)    |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Configure Settings|
+           |  (Set port, etc.)  |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Start Tomcat      |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Deploy Apps       |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  Monitor Logs      |
+           +--------------------+
+                     |
+                     v
+           +--------------------+
+           |  End               |
+           +--------------------+
+
+
+*************************************
+
+Starting and Stopping Apache Tomcat
+-----------------------------------
+
+	### **To Start Tomcat:**
+
+		- Navigate to `Apache Tomcat -> bin -> startup.bat` (Windows Batch File)
+		- Double-click or run it from the command prompt.
+
+
+	### **To Stop Tomcat:**
+
+		- Navigate to `Apache Tomcat -> bin -> shutdown.bat`
+		- Run the script to gracefully stop Tomcat.
+
+
+*************************************
+
+Configuration and Logs
+----------------------
+
+	- **For Configuration Changes:** Navigate to `Apache Tomcat -> conf`
+	- **For Deploying Applications (Artifacts/Deployable Packages):** Use `Apache Tomcat -> webapps`
+	- **For Logs:**
+  		- General logs: `Apache Tomcat -> logs`
+  		- Application logs: Logs of hosted applications running inside Tomcat.
+
+
+*************************************
+
+Accessing Apache Tomcat Locally
+-------------------------------
+	- Open a web browser and enter:
+  		- `http://localhost:8080/`
+				
+				or
+
+  		- `http://127.0.0.1:8080/`
+
+
+*************************************
+
+Conclusion
+----------
+
+	-Apache Tomcat is a lightweight and powerful tool for deploying Java web applications.
+	-It is widely used in enterprise applications and supports multiple configurations for different use cases.
