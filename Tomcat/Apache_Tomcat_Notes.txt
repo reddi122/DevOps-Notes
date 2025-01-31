@@ -150,6 +150,123 @@ Accessing Apache Tomcat Locally
 
 *************************************
 
+TOMCAT_DAY2
+=========================================
+
+Tomcat Folder Structure:
+-------------------------
+
+	- bin (binary) ----> use for start and stop the server
+	- conf (configuration)
+	- lib (library)
+	- logs
+	- temp (temporary)
+	- webapps ----> used for host application through by placing artifact file here.
+	- work
+
+How to access the Application
+------------------------------
+
+	- url--->  127.0.0.1:8080    or  localhost:8080/artifactname
+
+	- Here artifact name we can give as ex:- AJA , taxi-booking
+
+
+mvn archetype:generate -DgroupId=com.example.helloworld -DartifactId=helloworld -DarchetypeArtifactId=maven-archetype-webapp -DinteractiveMode=false
+
+==========================================
+
+How we place the Artifact from maven project of Target folder to Apache Tomcat webapps folder
+---------------------------------------------------------------------------------------------
+
+	- cp <path where artifact> <path where webapps of tomcat>
+
+			or
+
+	- cp <source> <destination>
+
+			or
+
+	- <destination> cp/ <source>
+
+	- configuration changes we need to restart the server
+
+	- To change port number of these we should stop the server then change the default port number to other port number then you can 		  start.
+					or
+
+ 	- exit the cmd terminal (or) ctrl+c ----> To stop Tomcat
+
+
+To deploy the application by using GUI:
+----------------------------------------
+
+	- GUI ----->Graphical user interface
+	- Manager Gui ---> Allows access to the HTML Gui and status pages
+	-*To deploy the application another way is Tomcat Gui
+	-*Access the url of Tomcat then such the war file to deploy option
+	-*click on choose file button it will open dialogue box we need to select artifact and then click on open button and click on 	 	  deploy button.
+
+********************************************************
+
+How  can we access Apache Maven tomcat Gui ?
+---------------------------------------------
+
+Start
+  |
+  v
+Navigate to Apache Tomcat Home Folder
+  |
+  v
+Go to "conf" directory
+  |
+  v
+Modify "tomcat-user.xml"
+  |
+  v
+Open the file using "vi tomcat-user.xml"
+  |
+  v
+Search for Username and Password
+  |
+  v
+Change Username = admin and Password = admin@123
+  |
+  v
+Uncomment the lines (remove <!-- and -->)
+  |
+  v
+Save and exit (:wq!)
+  |
+  v
+ End
+
+
+
+
+- Then after modifying the username and password go to
+ 
+	* Apache Tomcat access page  and go to manager give the username and password then
+	* Go to choose file after choose file
+	* Deploy
+
+
+***************************************************
+
+How to view the last 15 lines of the file:
+-------------------------------------------
+
+
+	tail -15 filename
+
+
+How to view the first 15 lines of the file:
+----------------------------------------------
+
+
+	head -15 filename
+
+
+
 Conclusion
 ----------
 
