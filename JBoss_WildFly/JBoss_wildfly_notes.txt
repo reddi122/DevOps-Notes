@@ -1,0 +1,155 @@
+# JBoss WildFly
+===============================
+
+	-JBoss WildFly is a powerful open-source Java application server developed by Red Hat.
+
+
+# Website to download for JBoss WildFly:
+--------------------------------------
+
+	https://wildfly.org/downloads
+
+
+# Default Port Numbers:
+---------------------
+
+	- 9990 → Admin Console              ---> changed to "8222"
+
+	- 8080 → Applications/Artifacts     ---> changed to "8111"
+
+
+# Folder Structure of WildFly:
+----------------------------
+
+	- domains --> Contains configurations for domain mode, where multiple servers can be managed together.
+
+	- modules --> Stores Java libraries and modules required for applications.
+
+	- welcome-content --> Default welcome page and static content served by WildFly.
+
+	- docs --> Documentation files related to WildFly.
+
+	- bin --> Contains executable scripts to start, stop, and manage the server.
+
+	- applications --> Location for user applications.
+
+	- standalone;
+
+  	 	+ configuration --> Stores configurations for standalone mode applications and user specifications.
+
+  		+ deployments --> Contains all deployed applications, such as `.war`, `.jar`, and `.ear` files.
+
+  		+ logs --> Stores WildFly logs, including server startup logs and errors.
+
+
+# How to Start and Stop JBoss WildFly:
+------------------------------------
+
+	## Start the JBoss Server:
+	----------------------------
+
+	1. Navigate to the WildFly home directory.
+
+	2. Open the `bin` directory.
+
+	3. Click the 'standalone' (windows batch file)
+
+
+	## To Shutdown JBoss Server:
+	-----------------------------
+	
+	1. Click the "X" in cmd console.
+
+	2. Click the "ctrl + C"
+
+	3. Execute the shutdown command:
+
+  		- **Windows**: `jboss-cli.bat --connect command=:shutdown`
+
+
+# Creating a Management Console User:
+-----------------------------------
+
+	1. Navigate to the WildFly home folder and open `bin`.
+
+	2. click on "add-user.bat".
+
+	3. Follow the prompts:
+
+   		- Select user type (`a` for management user, `b` for application user).
+
+   		- Enter "a" --> username and password and reenter passpord
+
+   		- Confirm user creation.
+
+
+# Accessing the WildFly Management Console:
+-----------------------------------------
+
+	- Admin Console URL: `http://<server-ip>:9990`
+
+	- Requires authentication (username and password).
+
+	- Application Access: `http://<server-ip>:8080/<application-name>`
+
+
+# Deploying Applications in WildFly:
+--------------------------------------
+
+	## Using File Copying:
+	---------------------
+
+	1. Copy the `.war` file into the deployment directory:
+
+   		- Path: `WildFly home --> standalone --> deployments`
+
+
+	## Using Command Line:
+	----------------------
+
+	- Execute in git:
+ 
+  		cp <artifact-source-path> <destination of deployments of wildfly>
+ 
+
+	## Using JBoss WildFly GUI:
+	---------------------------
+	1. Run this URL in crome --> "http://localhost:9990"
+
+	2. Click on `Deployments` tab.
+
+	3. Click on `+` to upload the artifact.
+
+	4. Select and deploy the `.war`, `.jar`, or `.ear` file.
+
+
+# Changing the Port Number in WildFly:
+------------------------------------
+
+	1. wildfly home --> standalone --> configuration --> standalone.xml.
+
+	2. Locate the `<socket-binding-group>` section.
+
+	3. Modify the `<socket-binding port>` values for `http` and `https`.
+
+	4. Restart WildFly.
+
+
+# Configuring Master-Slave in WildFly:
+------------------------------------
+
+	1. Configure the domain controller (Master) in `domain.xml`.
+
+	2. Configure the host controllers (Slaves) in `host.xml`.
+
+	3. Ensure proper network configuration for intercommunication.
+
+
+# Shutting Down WildFly Through Folder Structure:
+-----------------------------------------------
+
+	1. **Windows**
+
+		-bin folder --> jboss-cli.bat --> connect and enter command=:shutdown
+
+
