@@ -5,13 +5,13 @@
 
 
 # Website to download for JBoss WildFly:
---------------------------------------
+========================================
 
 	https://wildfly.org/downloads
 
 
 # Default Port Numbers:
----------------------
+=======================
 
 	- 9990 → Admin Console              ---> changed to "8222"
 
@@ -19,7 +19,7 @@
 
 
 # Folder Structure of WildFly:
-----------------------------
+==============================
 
 	- domains --> Contains configurations for domain mode, where multiple servers can be managed together.
 
@@ -43,7 +43,7 @@
 
 
 # How to Start and Stop JBoss WildFly:
-------------------------------------
+======================================
 
 	## Start the JBoss Server:
 	----------------------------
@@ -68,7 +68,7 @@
 
 
 # Creating a Management Console User:
------------------------------------
+=====================================
 
 	1. Navigate to the WildFly home folder and open `bin`.
 
@@ -84,7 +84,7 @@
 
 
 # Accessing the WildFly Management Console:
------------------------------------------
+===========================================
 
 	- Admin Console URL: `http://<server-ip>:9990`
 
@@ -94,7 +94,7 @@
 
 
 # Deploying Applications in WildFly:
---------------------------------------
+====================================
 
 	## Using File Copying:
 	---------------------
@@ -124,7 +124,7 @@
 
 
 # Changing the Port Number in WildFly:
-------------------------------------
+=======================================
 
 	1. wildfly home --> standalone --> configuration --> standalone.xml.
 
@@ -136,7 +136,7 @@
 
 
 # Configuring Master-Slave in WildFly:
-------------------------------------
+======================================
 
 	1. Configure the domain controller (Master) in `domain.xml`.
 
@@ -146,10 +146,143 @@
 
 
 # Shutting Down WildFly Through Folder Structure:
------------------------------------------------
+=================================================
 
 	1. **Windows**
 
 		-bin folder --> jboss-cli.bat --> connect and enter command=:shutdown
+
+
+# Configuration changes:
+=========================
+
+	-> Things to keep in mind before changing configuration changes:
+
+		1. Where to change.
+	
+		2. Backup.
+
+		3. How to change.
+
+		4. Try or Experiment in local environments.
+
+		5. Documentation.
+
+
+# Backup / Snapshot:
+====================
+
+	-> For WildFly configuration snapshot.
+
+		- Home folder of wildfly --> standalone --> configuration --> standalone_xml_history.
+		
+		- file name: standalone.v1
+
+			eg: port number change.
+	
+				- standalone_portchange.v2
+	
+		- Need to rename the original (or) existing file.
+
+
+# Different status of the artifacts deployed in WildFly:
+========================================================
+
+	-> In WildFly, deployed artifacts can have various status states including.
+
+		1. Deployed: The application is successfully running on the WildFly server and accessible to users.
+		------------
+
+		2. Undeployed: The application has been removed from the server and is not currently running.
+		-------------
+
+		3. Failed: The deployment process encountered an error and the application is not running.
+		----------
+
+		4. Disabled: The application is intentionally stopped by the administrator and cannot be accessed until enabled.
+		------------
+
+		5. Suspended: The application is temporarily paused and can be resumed later.
+		-------------
+
+		6. Redeploying: The application is currently being updated with new code and is not fully available while the redeployment process is ongoing.
+		---------------
+
+
+# Accessing deployment status:
+==============================
+
+	-> WildFly Management Console:
+	   ---------------------------
+
+		- You can view the status of the deployed artifacts through the WildFly admin console, which provides a list of deployments and their current state.
+
+
+	-> CLI (Command Line Interface):
+	   -----------------------------
+
+		- Using the WildFly command line interface, you can query the status of deployments with management downloads.
+
+
+	-> Indicating whether the application is currently running, not deployed, or encountered an error during deployment, intentionally
+
+ deactivated, temporarily paused, or is in the process of being.
+
+
+
+# DCDH = Domain Controller and Host Controller.
+ ======
+
+
+# Domain Controller and host controller in WildFly (DCDH):
+==========================================================
+
+	-> In JBoss WildFly a "domain controller" is the central management point for a group of servers within a domain, responsible for maintaining the overall configuration and policy.
+
+	-> While a "host controller" is a separate process running on each server within the domain, communicating with the domain controller to manage the individual server instances on that host machine.
+
+	-> Essentially, the domain controller dictates the overall configuration and the host controllers execute those configurations on their respective servers.
+
+
+# Key points about domain and host controllers :
+================================================
+
+	-> Domain Controller:
+	   ------------------
+
+		- Acts as the central management point for the entire domain.
+
+		- stores the domain-wide configuration in a file called "domain.xml".
+
+			(Home Folder --> Domain --> Configuration --> domain.xml)
+
+		- Responsible for distributing configuration changes to all host controllers within the domain.
+
+	
+	-> Host Controller:
+	   ----------------
+
+		- Manages the application server instances running on a specific host.
+
+		- Reads its configuration from a "host.xml" file specific to that host.
+
+			(Home Folder  --> Domain --> Configuration --> host.xml)
+
+		- Communicate with the domain controller to receive configuration updates and start/stop server instances.
+
+
+	-> Note:
+	  ------
+
+		- "Domain": A centralized WildFly server that manages multiple WildFly servers.
+
+		- "Host": A system that runs and controls WildFly servers in a domain.
+
+
+
+
+
+		
+
 
 
