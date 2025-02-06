@@ -1,0 +1,385 @@
+# Importance of Continuous Integration:
+=======================================
+
+	1). Improves Quality: Improves the quality by running multiple unit tests and analyzing various static codes.
+	    ----------------
+
+	2). Improves Productivity: Automating the build of code saves a lot of time, thereby increasing productivity.
+         ----------------------
+
+	3). Reduces Risk: Eliminate the risk of potential human errors by automating tests.
+         -------------
+
+
+# Features of Jenkins:
+======================
+
+	-> Easy Installation process.
+
+	-> Provides advance security.
+
+	-> Optimized performance.
+
+	-> Upgrades are easily available.
+
+	-> Lightweight container support.
+
+	-> Distributed team management.
+
+
+# What is Continuous Integration:
+=================================
+
+	-> It is the process of automating the building and testing of code, each time one of the team member commit changes to version control.
+
+	-> CI: Continuous Integration.
+
+	-> CD: Continuous Delivery (also known as Release)
+
+				  (or)
+
+			Continuous Deployment
+
+
+# Popular Continuous Integration Tools:
+=======================================
+
+	-> Gitlab CI
+
+	-> Codeship
+
+	-> Bamboo
+
+	-> Jenkins
+
+	-> TeamCity
+
+	-> Trans CI
+
+	-> From the AWS cloud if we wanted to perform CI/CD, there are various services like code commit, code deploy, code guru, code build, and code pipeline.
+
+	-> From the Azure cloud, we have Azure DevOps, repos, pipelines, test plans, Boards, and Artifacts.
+
+
+# What is Jenkins:
+=================
+
+	-> A Continuous Integration server that manages and controls processes such as planning, coding, building, testing, deploying, operating, and monitoring in DevOps Environment.
+
+
+# Why Jenkins is so popular:
+============================
+
+	-> Open source.
+
+	-> Good plugin support.
+
+	-> Good Community support.
+
+	-> Fast and Reliable.
+
+	-> Good OS support.
+
+	-> Scripted Builds.
+
+
+
+# Topics:
+=========
+
+	## Following are the topics covered in this module:
+		
+		-> Jenkins Architecture.
+
+		-> Plugin Management in Jenkins.
+
+		-> Jenkins Security management.
+
+		-> Notification in Jenkins.
+
+		-> Jenkins master-slave architecture.
+
+		-> Jenkins delivery pipeline.
+
+		-> Jenkins declarative pipeline.
+
+
+# Jenkins Architecture: Source Control Management:
+
+
+# Plugin Management in Jenkins:
+===============================
+
+	-> Tabs
+	   -----
+		- Update: Shows updates to plugins already installed.
+	       -------
+
+		- Available: Shows plugins that are available for installation.
+		  ---------
+
+		- Installed: Displays plugins installed that have no updates.
+		  ---------
+
+		- Advanced: Lists configuration of HTTP proxy, allows manual upload of the plugin and URL of plugin site.
+		  ---------
+
+
+	-> Note: In real-time, we can't install the plugin as simple as that because there might be challenges in proxy settings.
+	   ----
+
+
+# How to Install Jenkins on Windows:
+====================================
+
+	-> Different Ways of Installation:
+
+		- Using Docker.
+
+		- Using Kubernetes.
+
+		- Using War file.
+
+		- Using Windows.
+
+		- Using Linux.
+
+
+# Prerequites:
+==============
+
+	-> Minimum hardware requirements:
+
+		- 256 MB of RAM.
+
+		- 1 GB of drive space (although 10 GB is a recommended minimum if running Jenkins as a Docker container).
+
+
+	-> Recommended hardware configuration for a small team:
+
+		- 4 GB+ of RAM.
+
+		- 50 GB+ of drive space.
+
+	->Note: Jenkins tool is developed on Java code.
+	  ----
+
+	-> A system running Windows 10.
+
+	-> The latest copy of JDK or JRE.
+
+	-> Access to an account with administrator privileges.
+
+	-> Internet.
+
+
+
+# Install Jenkins on Windows:
+============================
+
+	-> Browse to the official Jenkins download page, under the downloading Jenkins section is a list of installers for long-term support.
+
+		- Click the Windows link to begin downloading Jenkins.
+
+		- After downloading, Go to file manager and click on the Jenkins file (file type is Windows installer package).
+
+		- The setup wizard starts. click next to proceed.
+
+		- Select the install destination folder and click next to continue.
+
+		- Under the run service as a local or domain user option, enter the domain username and password for the user account you want to run Jenkins with click test credentials to verify the login.
+
+			|
+			v
+
+		  Select Runs as a local system.
+
+		- Enter the port number you want Jenkins to run on. Click the test port to check if the selected port is available, then click next to continue.
+
+			|
+			V
+
+		  Default port number: 8080
+
+		- Select the directory where Java is installed on your system and click next to proceed.
+
+		- Select the features you want to install with Jenkins and click Next to continue.
+
+		- Click Install to start the installation process.
+
+
+# How to Configure Jenkins:
+==========================
+
+	-> After completing the installation process, you have to unblock Jenkins before you can customize and start using it.
+
+		1) In your web browser, navigate to the port number you selected during the installation using the following address.
+
+			- http://localhost:[port number]
+
+			ex: http://localhost:8080
+
+		2) Navigate to the location on your system specified.
+
+			- Please copy the password from the location.
+
+				-- (C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword)
+
+			- Where the initial admin password is a file, in order to read the data of that file use "cat" command.
+
+				-- (cat C:\ProgramData\Jenkins\.jenkins\secrets\initialAdminPassword)
+
+
+		3) Copy the password from the initial Admin Password file.
+
+		4) Paste the password in the Administrator password field on the unblock Jenkins page and click continue to proceed.
+
+		5) Click the install suggested plugins button to have Jenkins automatically install the most frequently used plugin.
+
+		6) After Jenkins finishes installing the plugins, enter the required information on the Create First admin user page. Click save and continue to proceed.
+
+
+# How to stop Jenkins server in Windows:
+=======================================
+
+	-> Search for services --> Select Jenkins --> On the left side, there are stop and restart options, click on stop.
+
+
+# How to restart the Jenkins:
+============================
+
+	-> Safe Restart: Go to the URL of Jenkins "http://localhost:8080/safeRestart"
+
+		- Jenkins will try to pause jobs and restart once all running jobs are either finished or paused.
+
+
+
+# Plugin Installation:
+=====================
+
+	-> There are two ways to install the plugin.
+
+		1) Automatically: Once you log into Jenkins GUI, on the left side, you will see the option to manage Jenkins. Click on manage Jenkins, In the first tab there is a system
+		   -------------
+configuration. Under that select plugins. Next, go to the available plugins and search for the plugin which is required, Select the plugin under the list, Once the plugin is, install 
+
+The button is highlighted, so click on the install button.
+
+	
+		2) Manually: Under the plugins tab, go for available plugins search for the plugin, and click on the plugin, that is required, once you click on the plugin new tab is 
+		   --------
+open, then click on releases, and under releases you will see the versions of the plugins, Go for the plugins which is required, under the install option. Click on the direct link, it 
+
+will downloaded to our local system.
+
+	
+	-> When we install plugins automatically, the extension of the plugin is "jpi" (Jenkins Plugin).
+
+	-> When we install plugins in a manual way, the extension of the plugin is "hpi" (Hudson plugin).
+
+
+# How to uninstall the Plugin?
+==============================
+
+	-> Manage Jenkins --> Plugins --> Installed plugins --> search plugin name which we wanted to uninstall --> select the plugin and then uninstall button will be highlighted --> 
+
+once clicked on uninstall, the plugin will get uninstalled.
+
+
+
+# How to update the Plugin?
+==========================
+
+	-> Manage Jenkins --> Plugins --> Updates --> Select the plugin and then the update button will be highlighted, once clicked on update, the plugin will get updated.
+
+	-> Note: In real time we should not update the plugin directly because there may be challenges encountered. It will be recommended to update the plugin in your local 
+
+machine, where other team members will not be affected.
+
+
+# How to create the users:
+==========================
+
+	-> Manage Jenkins --> Security --> Users (create/delete/modify users that can log into this Jenkins) --> Click on create users --> Give a username, password, name, and email then 
+
+click on the Create User button.
+
+
+# How to give permissions to the users:
+=======================================
+
+	-> Manage Jenkins --> Security(secure Jenkins, define who is allowed to access/use the system) --> Click on that security you will get the Authorization page --> You will click
+
+the add user button and click on the add user button. --> It will ask user ID, give userId, and click on the ok button.
+
+	-> After that you should see the added user name --> Then give the permission for the users by checking the box (minimum access to give is overall read)
+
+	-> Note: By default whatever we create for the users, will get stored in Jenkin's own user database. Jenkin's own user database is suitable for smaller setups where you have no 
+
+existing user database elsewhere. Another option is LDAP (Lightweight directory access protocol)
+
+
+
+# Authorization Strategies:
+===========================
+
+	-> By default, project-based matrix authorization strategy, with this we can manage the authorization based on the options available under the strategy.	
+
+		- eg: Credentials, Agent, Job ...etc.
+
+
+# Matrix Authorization Strategy:
+===============================
+
+	-> Use Cases: Matrix Authorization allows configuring the lowest level permission, such as starting new builds, configuring items or deleting them individually.
+
+
+# Jenkins Projects (Project [or] Job):
+=====================================
+
+	1). Freestyle project: Classic, general-purpose job type that checks out from up to one SCM, executes build steps serially, followed by post-build steps like archiving artifacts 
+	    -----------------
+and sending email notifications.
+
+	2). Pipeline: Orchestrates long-running activities that can span multiple build agents. Suitable for building pipelines (formerly known as workflows) and/or organizing complex 
+	    --------
+activities that do not easily fit in a free-style job type.
+
+	3). Multi-configuration project: Suitable for projects that need a large number of different configurations, such as testing on multiple environments, platform-specific builds, 
+	    ---------------------------
+etc.
+
+	4). Folder: Creates a container that stores nested items in it. Useful for grouping things. Unlike view, which is just a filter, a folder creates a separate namespace, 
+	    ------
+so you can have multiple things of the same name as long as they are in different folders.
+
+	5). Multibranch Pipeline: Creates a set of Pipeline projects according to detected branches in one SCM repository.
+	    --------------------	
+	6). Organization Folder: Creates a set of multibranch project subfolders by scanning for repositories.
+	    -------------------
+
+
+# How to Create a Job (or) Project in Jenkins:
+=============================================
+
+	-> In Jenkins GUI --> click on new item --> Enter the item name --> select item type --> once selected any item, then click on ok --> the job configuration is consists of general 
+
+(where we can give information/description about the project), source code management where we will be passing URLs of the repositories, build triggers (In what way we wanted to build 
+
+that job), build environment, build steps (where we can add tasks), and post-build actions.
+
+
+# How to get a Free-Style Job (or) Project:
+==========================================
+
+	-> New Item --> Give job name/item name --> Select freestyle project --> Click on ok.
+
+	-> Build steps (configuration) --> add build step dropdown --> select execute windows batch command --> type dir --> Click on save.
+
+	-> Then click on build Now " and check for console output.
+
+
+
+
+	
+
