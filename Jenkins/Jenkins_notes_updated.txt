@@ -40,6 +40,8 @@
 
 			Continuous Deployment
 
+	-> Eg: Development --> Source Control --> Build --> Testing.
+
 
 # Popular Continuous Integration Tools:
 =======================================
@@ -65,6 +67,18 @@
 =================
 
 	-> A Continuous Integration server that manages and controls processes such as planning, coding, building, testing, deploying, operating, and monitoring in DevOps Environment.
+
+		
+			PLAN						DEPLOY
+		
+										
+			CODE
+									OPERATE
+					    JENKINS
+			BUILD	   
+ 				 
+									MONITOR
+			TEST
 
 
 # Why Jenkins is so popular:
@@ -105,6 +119,49 @@
 
 
 # Jenkins Architecture: Source Control Management:
+
+
+
+	  +--------------------+
+        |    Developers      |
+        +--------------------+
+                 |
+                 v
+        +--------------------+
+        |    Source Control  |  (Git, SVN)
+        +--------------------+
+                 |
+                 v
+        +--------------------+
+        |      Jenkins       |
+        |   (CI Server)      |
+        +--------------------+
+        |  - Build Trigger  |
+        |  - Job Execution  |
+        +--------------------+
+                 |
+     ------------------------
+     |                      |
+     v                      v
++------------+        +------------+
+|   Build    | -----> |   Test     |
+|  (Maven,   |        | (Selenium, |
+|  Gradle)   |        |  JUnit)    |
++------------+        +------------+
+     |                      |
+     v                      v
++------------+        +------------+
+|   Deploy   | -----> | Monitoring |
+| (Docker,   |        | (Nagios,   |
+| Kubernetes)|        |  Prometheus)|
++------------+        +------------+
+                 |
+                 v
+        +--------------------+
+        |    Production      |
+        +--------------------+
+
+
 
 
 # Plugin Management in Jenkins:
@@ -187,7 +244,9 @@
 
 		- Select the install destination folder and click next to continue.
 
-		- Under the run service as a local or domain user option, enter the domain username and password for the user account you want to run Jenkins with click test credentials to verify the login.
+		- Under the run service as a local or domain user option, enter the domain username and password for the user account you want to run Jenkins with click test credentials to 
+	
+		  verify the login.
 
 			|
 			v
@@ -378,6 +437,138 @@ that job), build environment, build steps (where we can add tasks), and post-bui
 
 	-> Then click on build Now " and check for console output.
 
+
+# What if a Jenkins user forgets the password?
+===========================================
+
+	-> As the Jenkins administrator there is a provision to reset the user's credentials.
+
+	-> manage Jenkins --> security --> users --> Go for the user that needs to be reset and click on security (on the left side you will see the option) --> See password and confirm
+
+	   password. There you can change the password and click on save.
+
+	-> Once an administrator changes the password again you need to inform the user saying please, follow the below steps to log in.
+
+	-> Once logged into the Jenkins GUI, click on user name --> Click on security --> there you can change the password.
+
+	-> Note: Slaves, nodes, agents these three terminologies are the same.
+	   ----
+
+
+# Jenkins Folders :
+=================
+
+	-> In Windows OS we can see all Jenkins information and configuration details under the path.
+
+			[C:\ProgramData\Jenkins\.jenkins\workspace\demo>dir]
+
+	-> Under the .jenkins folder, we can see the user folder (where all the Jenkins user data is available).
+
+	-> Workspace: where all the configured job information is available.
+	   ---------
+	-> Secrets: Where all the configured secrets are available.
+	   -------
+	-> Plugins: all the plugins (which are installed manually and automated) are available.
+	   -------
+	-> Nodes: where all the configured nodes are available.
+	   -----
+	-> Logs: we can see slaves (if configured) and tasks logs are available.
+	   ----
+	-> Apart from the above folders there is Jenkins configurational file namely config.xml (if at all changing the config.xml file first take the backup of the file )
+	
+	-> We can also see the Jenkins logs in the GUI.
+
+		[manage jenkins --> status information --> system log --> all jenkin logs]
+
+
+# Where we can see the Jenkins version?
+======================================
+
+	-> We can see the Jenkins version at the bottom of Jenkins GUI and also.
+
+		[manage jenkins --> status information --> about jenkins]
+
+
+# Ways to trigger the Jenkins jobs:
+===================================
+
+	-> Triggers: Set up automated actions that start your build based on specific events, like code changes or scheduled times.
+
+	## There are five ways :
+
+		1). Trigger builds remotely (eg, from scripts):
+		    ------------------------------------------	 
+
+			-> In order to use this option/trigger, first we need to generate the authentication token of the job.
+
+			-> Enable this option if you would like to trigger new builds by accessing a special pre-defined URL (Convenient for scripts)
+		
+			-> You need to provide an authorization token in the form of a string so that only those who know it would be able to remotely trigger this project's builds.
+
+			-> This is most useful when your Jenkins instance grants read access to this job to anonymous users.
+
+			-> When that's not the case, Jenkins will reject requests sent to the trigger URL even when the correct token is specified.
+
+			-> Use the following URL to trigger the build remotely :
+
+				[JENKINS_URL/job/ajafreestyle/build?token=TOKEN_NAME or /buildWithParameters?token=TOKEN_NAME]
+
+
+		2) . Build after other projects are built (upstream and downstream jobs):
+		     --------------------------------------------------------------------
+
+			-> Set up a trigger so that when some other projects finish building, a new build is scheduled for this project.
+
+			-> This is convenient for running extensive tests after a build is complete.
+
+			-> We need to pass the job name (which is configured already under projects to the watch tab)
+
+			-> Under projects to watch, there are 4 options:
+
+				- Trigger only if the build is stable.
+
+				- Trigger even if the build is unstable.
+
+				- Trigger even if the build fails.
+
+				- Always trigger, even if the build is aborted.
+
+
+		3). Build periodically(in schedule):
+		    -------------------------------
+
+			-> This field follows the syntax of CRON (with minor differences). Specifically, each line consists of 5 fields separated by TAB or whitespace.
+
+			-> eg: MINUTE HOUR DOM MONTH DOW
+
+				- Minute: Minutes within the hour (0-59)
+
+				- Hour: The Hour of the day (0-23)
+
+				- DOM: The day of the month (1-31)
+
+				- Month: The Month (1-12)
+
+				- DOW: The day of the week (0-7) where 0 and 7 are Sunday.
+
+			-> To specify multiple values for one field, the following operations are available.
+
+			-> For reference / Practice use this website [crontab.guru].
+
+
+		4).GitHub hook trigger for GIT SCM Polling:
+		   ---------------------------------------
+
+			-> When Jenkins receives a GitHub push hook, the GitHub plugin checks to see whether the hook came from a GitHub repository that	matches the Git repository defined in 
+
+			   the SCM/Git section of this job.
+
+
+		5). Poll SCM: Configure Jenkins to poll changes in SCM.
+		    --------
+
+	-> Note: We can also trigger the job manually (a total of six ways we can trigger the job).
+	   ----
 
 
 
