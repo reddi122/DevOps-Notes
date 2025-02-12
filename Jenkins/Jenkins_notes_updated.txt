@@ -572,5 +572,303 @@ that job), build environment, build steps (where we can add tasks), and post-bui
 
 
 
+# I Need to trigger on Feb 8th Saturday every minute and in every hour:
+=======================================================================
+
+	-> Minute Hour DayofMonth Month DOW
+
+			* * 8 2 6
+
+	   Where:
+
+		* = Every Minute
+
+		* = Every Hour
+
+		8 = Day of Month
+
+		2 = Month (February)
+
+		6 = Day of Week (Saturday)
+
+
+# Job configuration of build periodically trigger and poll SCM trigger:
+=======================================================================
+
+	-> create new item --> triggers --> select check box build periodically or poll SCM --> once clicked on check box, scheduling comment box will open up.
+
+	-> There we need to give the schedule as per requirement eg (* * 8 2 6) --> Save (check for the jobs whether running as per the schedule or not).
+
+
+# Build after projects are built:
+================================
+
+	-> Create more than 1 job in the triggers option, and select build after other projects are built.
+
+	-> After selecting the option, need to give projects the watch name and then click on save and check.
+
+		Eg: job1,job2,job3
+
+	-> For job2, put the upstream project as the job1
+
+	-> For job3, put the upstream project as the job2
+
+	-> When we build job1, once job1 is completed automatically downstream project has to be built.
+
+	-> For job2, once you select built after other projects are built, and then select sub-option trigger even if the build falls and then save.
+
+	-> For job1, do one mistake wantedly and check for all the jobs.
+
+
+# Pipeline Project:
+===================
+
+	-> We are going for pipeline projects in order to secure the CI-CD pipeline code by storing it in any of the repositories (Github, Gitlab, bitbucket)
+
+	-> Sample hello-world script creation :
+
+		- Click on a new item, select pipeline, and click on ok.
+
+		- Go for pipeline in configuration, where we can define pipeline script.
+
+		- We can script in script tag or else we can take it from SCM.
+
+		- In the script tag, click on the drop-down option to try the sample pipeline.
+
+
+					pipeline{
+ 						agent any
+ 						stages{
+   							stage('hello'){
+     								steps{
+       								echo 'hello world'
+     								}
+   							}
+ 						}
+					}
+  
+		- Click on save.
+
+	-> Make sure that the stage view plugin should be installed, so that we can see stages.
+
+
+# Rebuild VS Replay:
+====================
+
+	-> When we use Rebuild, we are not changing anything, whereas Reply gives us permission to change the code then and there.
+
+	-> Replay, we also use it as one of the trouble-shooting mechanisms.
+
+	-> If we do not know how to write pipeline script code, we can take advantage of the snippet generator in the pipeline syntax option (the pipeline syntax option will only be
+
+visible when you create a pipeline job or project.)
+
+	-> The Snippet generator will help you learn the pipeline script code which can be used to define various steps.
+
+	-> Pick a step you are interested in from the list, configure it, click generate pipeline script, and you will see a pipeline script statement that would call the step with that
+
+configuration.
+
+	-> You may copy and paste the whole statement into your script, or pick up just the options you care about.
+
+		Eg: To print the message.
+
+	-> In the sample step of snippet generator, search for the echo, there is a step echo: print message then what message we need to print we have to pass it in the message block 
+
+	-> Then click on generate pipeline script, which will give us a script to print a message.
+
+	-> By default, pipeline execution will work serially (one by one), if the previous stage is passed then only it will go for the next or further stages.
+
+
+
+Jenkins-day5
+
+===========
+
+
+
+# How do you change the default port number of Jenkins?
+====================================================
+
+--> Go to the path: `C:/Program Files/Jenkins`.
+
+--> Here in this folder, we can find the `jenkins.xml` file.
+
+--> Search for `--httpPort=8080` in the `jenkins.xml` file, where `8080` is the default port number.
+
+--> To change this default port number, replace `8080` with the desired port number.
+
+--> Save the file.
+
+--> Once modified the Jenkins. xmlfile restart the Jenkins server.
+
+
+Note: Before Making any changes to Jenkins Configuration or port number, it's better to Take a backup of the original files to be on the safe side.
+=====
+
+ 
+# What if the Jenkins Administrator forgot the password?
+=======================================================
+ 
+
+--> Go to Jenkins home directory:
+
+    	C:/ProgramData/Jenkins/.jenkins`
+
+--> In that path, open `config.xml`, and search for:
+  
+	<useSecurity>true</useSecurity>
+   
+--> Replace 'true' with 'false'.
+
+--> Save the file.
+
+--> Now, access the Jenkins server in a browser; login details will not be required.
+
+--> Go to `Manage Jenkins` → `Security`.
+
+   - 'Security Realm' (When we change the `config.xml` file from `true` to `false`, it will be set to `none`).
+
+   - Change from `none` to 'Jenkins’ own user database`.
+
+--> Change Authorization settings:
+
+   - When true is set to `false`, the authorization will change to `Anyone can do anything`.
+
+   - Change from `Anyone can do anything` to either `Matrix-based` or `Project-based` strategy.
+
+--> Uncheck 'Anonymous' under the `Users` category.
+
+--> Now, add a user and assign the `Administrator` role.
+
+--> Save the settings.
+
+--> Navigate to 'Manage Jenkins' → `'Users' → 'Admin', then change the admin user password.
+
+--> Restart the Jenkins server.
+
+    **Note: is better to take a backup of the 'config.xml' file before proceeding.
+
+--> After restarting, check with the `Admin` user whether login with password and admin privileges works.
+
+--> Go back to 'config.xml' and modify:
+   
+<useSecurity>false</useSecurity>
+   
+   ****Change 'false' back to 'true'.
+--> Restart the Jenkins server.
+ 
+
+ 
+# Using Jenkins Environment Variables:
+======================================
+
+-> Jenkins pipeline exposes environment variables via the global variable `env`, which is available from anywhere within a 'Jenkinsfil'
+.
+   	**** jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables********
+ 
+-> Below are some of  Jenkins Environment Variables:
+
+	1. BUILD_ID - The current build ID, identical to **BUILD_NUMBER** for builds created.
+ 
+	2. BUILD_NUMBER
+
+	3. BUILD_TAG
+
+	4. BUILD_URL
+
+	5. JENKINS_URL
+
+	6. JOB_NAME
+
+	7. NODE_NAME
+
+	8. WORKSPACE
+ 
+  Example:-
+
+--> Use the **Jenkins Pipeline (Declarative Pipeline)**.
+
+--> In the Jenkins URL, we can see example code or copy the code when creating a new item in Jenkins for a pipeline job.
+
+--> Replace the script with copied code and save it.
+
+--> Build the job.
+
+-->Expected Output Should be running on 'http://localhost:8080'.
+
+-->If the port number is changed from `8080` to another port, but Jenkins still shows '8080', investigate why it is retaining the default port.
+
+
+
+
+How to Parameterize the Jenkins Job:-
+=====================================
+
+-->Parameters/Varaibles  allow you to prompt users for inputs that will be passed into a build.
+
+--> create a new job:
+
+  --> In the general configuration of the job, check the option **"This project is parameterized"**.
+
+ --> Click on the **"Add Parameter"** dropdown.
+
+  -->Various parameters available:
+
+     - Boolean
+
+     - Choice
+
+     - Credentials
+
+     - File
+
+     - Multi-line string
+
+     - Password
+
+     - Run
+
+     - String
+
+  For  Example:
+
+   --> Click on "Choice Parameter".
+
+   --> Define a simple parameter that can be selected from a list during a build.
+
+   --> Name it 'Env' and provide multiple environment names as choices.
+
+   --> Add a "Description" to inform users about the selection.
+
+  -->  Click "Save".
+
+  -->	When triggering the job, select **"Build with Parameters"** and choose the configured options.
+
+  --> Click "Build".
+
+  -->	This is how we create Parameterized Jobs.
+
+ 
+
+Another Way of Creating Jenkins User:-
+======================================
+
+-->Manage Jenkins > Security > Disable "Keep me signed in".
+
+-->This ensures users must sign in every time they access Jenkins services.
+
+-->Manage Jenkins > Security > "Allow users to sign in"**
+
+ --> Allows users to register and log in from the signup page.
+
+ -->Useful for controlling user access.
+
+-->It used to create user.
+ 
+
+
+
+
 	
 
