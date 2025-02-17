@@ -125,21 +125,21 @@
 	  +--------------------+
         |    Developers      |
         +--------------------+
-                 |
-                 v
+                  |
+                  v
         +--------------------+
         |    Source Control  |  (Git, SVN)
         +--------------------+
-                 |
-                 v
+                  |
+                  v
         +--------------------+
         |      Jenkins       |
         |   (CI Server)      |
         +--------------------+
-        |  - Build Trigger  |
-        |  - Job Execution  |
+        |  - Build Trigger   |
+        |  - Job Execution   |
         +--------------------+
-                 |
+                  |
      ------------------------
      |                      |
      v                      v
@@ -153,7 +153,7 @@
 +------------+        +------------+
 |   Deploy   | -----> | Monitoring |
 | (Docker,   |        | (Nagios,   |
-| Kubernetes)|        |  Prometheus)|
+| Kubernetes)|        | Prometheus)|
 +------------+        +------------+
                  |
                  v
@@ -687,237 +687,262 @@ Jenkins-day5
 
 
 
-# How do you change the default port number of Jenkins?
+# How do you change Jenkins' default port number?
 ====================================================
 
---> Go to the path: `C:/Program Files/Jenkins`.
+	-> Go to the path: `C:/Program Files/Jenkins`.
 
---> Here in this folder, we can find the `jenkins.xml` file.
+	-> Here in this folder,we can find the `jenkins.xml` file.
 
---> Search for `--httpPort=8080` in the `jenkins.xml` file, where `8080` is the default port number.
+	-> Search for `--httpPort=8080` in the `jenkins.xml` file, where `8080` is the default port number.
 
---> To change this default port number, replace `8080` with the desired port number.
+	-> To change this default port number, replace `8080` with the desired port number.
 
---> Save the file.
+	-> Save the file.
 
---> Once modified the Jenkins. xmlfile restart the Jenkins server.
+	-> Once modified the Jenkins. xmlfile restart the Jenkins server.
 
 
-Note: Before Making any changes to Jenkins Configuration or port number, it's better to Take a backup of the original files to be on the safe side.
-=====
+Note: Before Making any changes to Jenkins Configuration or port number, it's better to Take a backup of the original files to be on 
+
+the safe side.
 
  
 # What if the Jenkins Administrator forgot the password?
 =======================================================
  
 
---> Go to Jenkins home directory:
+	-> Go to Jenkins home directory:
 
-    	C:/ProgramData/Jenkins/.jenkins`
+    		C:/ProgramData/Jenkins/.jenkins`
 
---> In that path, open `config.xml`, and search for:
+	-> In that path, open `config.xml`, and search for:
   
-	<useSecurity>true</useSecurity>
+		<useSecurity>true</useSecurity>
+
+ 	-> Replace 'true' with 'false'.
+
+	-> Save the file.
+
+	-> Now, access the Jenkins server in a browser; login details will not be required.
+
+	-> Go to `Manage Jenkins` → `Security`.
+
+   		- 'Security Realm' (When we change the `config.xml` file from `true` to `false`, it will be set to `none`).
+
+   		- Change from `none` to 'Jenkins’ own user database`.
+
+	-> Change Authorization settings:
+
+   		- When true is set to `false`, the authorization will change to `Anyone can do anything`.
+
+   		- Change from `Anyone can do anything` to either `Matrix-based` or `Project-based` strategy.
+
+	-> Uncheck 'Anonymous' under the `Users` category.
+
+	-> Now, add a user and assign the `Administrator` role.
+
+	-> Save the settings.
+
+	-> Navigate to 'Manage Jenkins' → `'Users' → 'Admin', then change the admin user password.
+
+	-> Restart the Jenkins server.
+
+    	**Note: is better to take a backup of the 'config.xml' file before proceeding.
+
+	-> After restarting, check with the `Admin` user whether login with password and admin privileges works.
+
+	-> Go back to 'config.xml' and modify:
    
---> Replace 'true' with 'false'.
-
---> Save the file.
-
---> Now, access the Jenkins server in a browser; login details will not be required.
-
---> Go to `Manage Jenkins` → `Security`.
-
-   - 'Security Realm' (When we change the `config.xml` file from `true` to `false`, it will be set to `none`).
-
-   - Change from `none` to 'Jenkins’ own user database`.
-
---> Change Authorization settings:
-
-   - When true is set to `false`, the authorization will change to `Anyone can do anything`.
-
-   - Change from `Anyone can do anything` to either `Matrix-based` or `Project-based` strategy.
-
---> Uncheck 'Anonymous' under the `Users` category.
-
---> Now, add a user and assign the `Administrator` role.
-
---> Save the settings.
-
---> Navigate to 'Manage Jenkins' → `'Users' → 'Admin', then change the admin user password.
-
---> Restart the Jenkins server.
-
-    **Note: is better to take a backup of the 'config.xml' file before proceeding.
-
---> After restarting, check with the `Admin` user whether login with password and admin privileges works.
-
---> Go back to 'config.xml' and modify:
+		<useSecurity>false</useSecurity>
    
-<useSecurity>false</useSecurity>
-   
-   ****Change 'false' back to 'true'.
---> Restart the Jenkins server.
+      ****Change 'false' back to 'true'.
+
+	-> Restart the Jenkins server.
  
 
  
 # Using Jenkins Environment Variables:
 ======================================
 
--> Jenkins pipeline exposes environment variables via the global variable `env`, which is available from anywhere within a 'Jenkinsfil'
-.
-   	**** jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables********
+
+	-> Jenkins pipeline exposes environment variables via the global variable `env`, which is available from anywhere within a 'Jenkinsfil'
+
+	  	**** jenkins.io/doc/book/pipeline/jenkinsfile/#using-environment-variables****
  
--> Below are some of  Jenkins Environment Variables:
+	-> Below are some of  Jenkins Environment Variables:
 
-	1. BUILD_ID - The current build ID, identical to **BUILD_NUMBER** for builds created.
+		1. BUILD_ID - The current build ID, identical to **BUILD_NUMBER** for builds created.
  
-	2. BUILD_NUMBER
+		2. BUILD_NUMBER
 
-	3. BUILD_TAG
+		3. BUILD_TAG
 
-	4. BUILD_URL
+		4. BUILD_URL
 
-	5. JENKINS_URL
+		5. JENKINS_URL
 
-	6. JOB_NAME
+		6. JOB_NAME
 
-	7. NODE_NAME
+		7. NODE_NAME
 
-	8. WORKSPACE
+		8. WORKSPACE
  
   Example:-
 
---> Use the **Jenkins Pipeline (Declarative Pipeline)**.
+	-> Use the **Jenkins Pipeline (Declarative Pipeline)**.
 
---> In the Jenkins URL, we can see example code or copy the code when creating a new item in Jenkins for a pipeline job.
+	-> In the Jenkins URL, we can see example code or copy the code when creating a new item in Jenkins for a pipeline job.
 
---> Replace the script with copied code and save it.
+	-> Replace the script with the copied code and save it.
 
---> Build the job.
+	-> Build the job.
 
--->Expected Output Should be running on 'http://localhost:8080'.
+	->Expected Output Should be running on 'http://localhost:8080'.
 
--->If the port number is changed from `8080` to another port, but Jenkins still shows '8080', investigate why it is retaining the default port.
-
-
+	->If the port number is changed from `8080` to another port, but Jenkins still shows '8080', investigate why it is retaining the default port.
 
 
-How to Parameterize the Jenkins Job:-
+
+
+# How to Parameterize the Jenkins Job:-
 =====================================
 
--->Parameters/Varaibles  allow you to prompt users for inputs that will be passed into a build.
 
---> create a new job:
+	-> Parameters/Variables allow you to prompt users for inputs that will be passed into a build.
 
-  --> In the general configuration of the job, check the option **"This project is parameterized"**.
+	-> Create a new job:
 
- --> Click on the **"Add Parameter"** dropdown.
+	-> In the general configuration of the job, check the option **"This project is parameterized"**.
 
-  -->Various parameters available:
+	-> Click on the **"Add Parameter"** dropdown.
 
-     - Boolean
+ 	-> Various parameters available:
 
-     - Choice
+     		- Boolean
 
-     - Credentials
+     		- Choice
 
-     - File
+     		- Credentials
 
-     - Multi-line string
+		- File
 
-     - Password
+     		- Multi-line string
 
-     - Run
+     		- Password
 
-     - String
+     		- Run
 
-  For  Example:
+     		- String
 
-   --> Click on "Choice Parameter".
+  	For  Example:
 
-   --> Define a simple parameter that can be selected from a list during a build.
+   		-> Click on "Choice Parameter".
 
-   --> Name it 'Env' and provide multiple environment names as choices.
+   		-> Define a simple parameter that can be selected from a list during a build.
 
-   --> Add a "Description" to inform users about the selection.
+   		-> Name it 'Env' and provide multiple environment names as choices.
 
-  -->  Click "Save".
+   		-> Add a "Description" to inform users about the selection.
 
-  -->	When triggering the job, select **"Build with Parameters"** and choose the configured options.
+  		-> Click "Save". 
 
-  --> Click "Build".
+  		-> When triggering the job, select **"Build with Parameters"** and choose the configured options.
 
-  -->	This is how we create Parameterized Jobs.
+  		-> Click "Build".
+
+  		-> This is how we create Parameterized Jobs.
 
  
 
-Another Way of Creating Jenkins User:-
+# Another Way of Creating Jenkins User:-
 ======================================
 
--->Manage Jenkins > Security > Disable "Keep me signed in".
 
--->This ensures users must sign in every time they access Jenkins services.
+	-> Manage Jenkins > Security > Disable "Keep me signed in".
 
--->Manage Jenkins > Security > "Allow users to sign in"**
+	-> This ensures users must sign in every time they access Jenkins services.
 
- --> Allows users to register and log in from the signup page.
+	-> Manage Jenkins > Security > "Allow users to sign in"**
 
- -->Useful for controlling user access.
+ 	-> Allows users to register and log in from the signup page.
 
--->It used to create user.
+ 	-> Useful for controlling user access.
+
+	-> It is used to create a user.
 
 
 
 Date: 13-02-2025
 
-Tools Configuration in Jenkins:
-==============================
 
--> If we want to configure tools like Apache Maven, Docker, etc., we need to go to:
-
-**Manage Jenkins** → **System Configuration** → **Tools** (Configure tools, their locations & automatic installers)
-
-### Example: To Configure Apache Maven (Specific Version 3.6.0)
-1. To configure Apache Maven in the tools tab, we should install the **Apache Maven Plugin**. 
-After installing the plugin, we can see Maven installations in the Tools section.
-2. **Add Maven** → Specify requirements.
-3. To install automatically, check the **"Install Automatically"** option.
-
-----------------------------------------------------------------------------------------------------
-
-Build Trigger Remotely:
-----------------------
-To configure this kind of requirement, we can make use of:
-
-**Triggers → Trigger Build Remotely using Authentication Token**
-
-#### Steps:
-1. Create a **Freestyle Job** with the name **"build remotely"**.
-2. Check the **"Trigger Build Remotely"** option.
-3. Configure any build step with an authentication token.
-4. Save the configuration.
-5. To check this job, use the following URL:
-
-   **JENKINS_URL/job/buildremotely/build?token=TOKEN_NAME**
-
-   - **JENKINS_URL** → The Jenkins instance URL.
-   - **buildremotely** → The job name.
-   - **TOKEN_NAME** → The authentication token configured.
-
-#### Example:
-   **localhost:9090/job/buildremotely/build?token=abc-123**
-
-Another Way of Triggering a Job Remotely:
-  ------------------------------------------
-To trigger another job in Command Prompt, use the following command:
+# Tools Configuration in Jenkins:
+================================
 
 
-curl -u Admin:1125887eebb54959f6013e50b03c4440 -X POST localhost:8999/job/job2/build
+	-> If we want to configure tools like Apache Maven, Docker, etc., we need to go to:
 
-- **-u** → Specifies the user (**Admin**).
-- **POST** → HTTP method used to trigger the job.
+		**Manage Jenkins** → **System Configuration** → **Tools** (Configure tools, their locations & automatic installers)
 
-This method allows triggering Jenkins jobs remotely using an API token for authentication.
+	Example: To Configure Apache Maven (Specific Version 3.6.0)
+
+		1. To configure Apache Maven in the tools tab, we should install the **Apache Maven Plugin**.
+ 
+		2. After installing the plugin, we can see Maven installations in the Tools section.
+
+		3. Add Maven → Specify requirements.
+
+		4. To install automatically, check the **"Install Automatically"** option.
+
+
+
+
+# Build Trigger Remotely:
+========================
+
+
+	-> To configure this kind of requirement, we can make use of:
+
+	-> Triggers → Trigger Build Remotely using Authentication Token
+
+	#### Steps:
+
+		1. Create a **Freestyle Job** with the name **"build remotely"**.
+
+		2. Check the **"Trigger Build Remotely"** option.
+
+		3. Configure any build step with an authentication token.
+
+		4. Save the configuration.
+
+		5. To check this job, use the following URL:
+
+   			**JENKINS_URL/job/buildremotely/build?token=TOKEN_NAME**
+
+   				- **JENKINS_URL** → The Jenkins instance URL.
+
+   				- **buildremotely** → The job name.
+
+   				- **TOKEN_NAME** → The authentication token configured.
+
+		#### Example:
+
+   			**localhost:9090/job/buildremotely/build?token=abc-123**
+
+
+
+# Another Way of Triggering a Job Remotely:
+==========================================
+
+	-> To trigger another job in Command Prompt, use the following command:
+
+		**curl -u Admin:1125887eebb54959f6013e50b03c4440 -X POST localhost:8999/job/job2/build**
+
+			- **-u** → Specifies the user (**Admin**).
+
+			- **POST** → HTTP method used to trigger the job.
+
+	-> This method allows triggering Jenkins jobs remotely using an API token for authentication.
 
 
  
