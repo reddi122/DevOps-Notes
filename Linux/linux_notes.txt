@@ -1,0 +1,413 @@
+# Operating System:
+===================
+
+	-> We have a few types of operating systems:
+
+		- Linux
+
+		- Windows
+
+		- Mac
+
+		- Android
+
+
+# What is Linux?
+================
+
+	-> Linux is an open-source operating system modeled on Unix and developed in the C language.
+
+		- Linux was first released on **Sep 17, 1991, by Linus Torvalds**.
+
+
+# Why Learn Linux?
+==================
+
+	-> Free
+
+	-> Stable
+
+	-> Secure
+
+	-> Open Source
+
+	-> Used in real-time applications such as TV remotes and AC remotes.
+
+	-> iOS is derived from UNIX, making it a type of Linux OS.
+
+
+# Where is Linux Used?
+======================
+
+	-> Supercomputers
+
+	-> Embedded systems
+
+	-> Robotic OS (ROS)
+
+	-> Satellite communication systems (NASA)
+
+	-> IoT (Internet of Things)
+
+	-> Flight simulators
+
+	-> Bitcoin and cryptocurrency mining
+
+	-> Advanced driver assistance systems (ADAS)
+
+
+# Features of Linux:
+====================
+
+	-> Reliable, requiring fewer reboots.
+
+	-> Reduces monitoring costs.
+
+	-> Open-source with a large developer community.
+
+	-> Licensing freedom allows modification and republishing.
+
+	-> Highly customizable.
+
+	-> Frequent updates and enhancements.
+
+	-> More secure than other operating systems.
+
+
+# Boot Process of a Computer:
+=============================
+
+	1. Power-On: Electricity is supplied to hardware components.
+	   ---------
+
+	2. BIOS/UEFI: Performs a Power-On Self-Test (POST) and looks for a boot device.
+        ----------
+
+	3. Boot Loader (GRUB): Loads the selected kernel into memory.
+	   -------------------
+
+	4. Kernel Initialization: Initializes hardware drivers and memory management.
+        ----------------------
+ 
+	5. Init Process: Starts system services and processes (init 0 → Shutdown, init 6 → Reboot).
+        -------------
+
+	6. User Space Initialization: Mounts filesystems and starts system daemons.
+        --------------------------
+
+	7. Login Prompt: The user enters login credentials to access the system.
+        --------------
+
+
+# Architecture of Linux:
+=========================
+
+
+		Hardware
+
+    		   ↓
+
+		 Kernel
+
+    		   ↓
+
+		 Shell
+
+
+	- Kernel: Acts as an interface between applications and hardware.
+
+	- Shell: Takes user commands and sends them to the kernel.
+
+
+# Types of Shell:
+=================
+
+	-> Bash
+
+	-> C Shell
+
+	-> Korn Shell
+
+	-> tsch Shell
+
+
+# What is GNU?
+==============
+
+	-> GNU stands for **GNU's Not Unix**.
+
+	-> A collection of tools that help manage files, edit text, write code, and control Linux systems.
+
+
+# Linux Distributions:
+======================
+
+	-> A Linux distribution is an OS with a Linux kernel and GNU tools, along with additional applications.
+
+	-> Over 600 distributions exist based on different requirements.
+
+	-> Popular distributions:
+
+  		- Ubuntu
+
+  		- Fedora
+
+  		- RedHat
+
+  		- Debian
+
+  		- CentOS
+
+
+# File System in Linux:
+=======================
+
+	-> Some files represent hardware devices and system information.
+
+		- `/proc/cpuinfo`: Displays CPU information.
+
+		- `/proc`: Contains runtime system information.
+
+
+
+# Types of Files in Linux:
+==========================
+
+
+
+	| Prefix  | Type                            		|
+	|---------|--------------------------------------- |
+	| `_`     | Normal file                    		|
+	| `d`     | Directory                      		|
+	| `l`     | Symbolic link                   		|
+	| `p`     | Pipe (Inter-process communication) 	|
+	| `S`     | Socket (Passes data between processes) |
+	| `C`     | Character device file 			|
+
+
+# Run Levels in Linux:
+======================
+
+
+	| Run Level | Description                      |
+	|-----------|----------------------------------|
+	| 0         | Halt the system                  |
+	| 1         | Single-user mode                 |
+	| 2         | Multi-user mode (no network FS)  |
+	| 3         | Multi-user mode in CLI           |
+	| 4         | User definable                   |
+	| 5         | Multi-user mode in GUI           |
+	| 6         | Reboot                           |
+
+
+
+# Pipes in Linux:
+=================
+
+	-> Represented by `|`, pipes send the output of one command as input to another.
+
+	-> Example: `cat file.txt | grep Linux`
+
+
+# Linux Directory Structure:
+============================
+
+	-> The Linux directory system is hierarchical, starting from the root `/` directory.
+
+
+	/         - Root directory (Contains all other directories and system files)
+
+	/root     - Home directory for the root user (Contains root user configuration files)
+
+	/home     - Home directories for users (Contains user-specific files and settings)
+
+	/bin      - Essential binary commands (Contains ls, cp, mv, cat, echo, etc.)
+
+	/boot     - Boot files (Contains Kernel, GRUB configuration, and bootloader files)
+
+	/dev      - Device files (Contains disk files like /dev/sda, USB devices like /dev/usb1)
+
+	/etc      - Configuration files (Contains user info in /etc/passwd, network settings, etc.)
+
+	/usr      - User applications (Contains installed programs, shared libraries)
+
+	/sbin     - System binaries (Contains admin commands like shutdown, ifconfig)
+
+	/var      - Variable data (Contains logs, databases, mail spool files)
+
+	/mnt      - Mount points (Used to temporarily mount filesystems)
+
+	/media    - Removable media (Contains USB, CD-ROM, and external drives)
+
+	/lib      - System libraries (Contains shared object files like libc.so.6)
+
+	/proc     - Virtual filesystem (Contains runtime system information such as CPU and RAM details)
+
+	/opt      - Optional software (Contains third-party applications)
+
+	/tmp      - Temporary files (Stores session data, temporary storage)
+
+
+
+
+# Basic Linux Commands with Examples:
+======================================
+
+
+1. ls - List directory contents
+
+   Syntax: ls [options] [directory]
+
+   Example: ls -l /home
+
+***********************************************
+
+2. mkdir - Create a new directory
+
+   Syntax: mkdir [directory_name]
+
+   Example: mkdir new_folder
+
+***********************************************
+
+3. mv - Move or rename files and directories
+
+   Syntax: mv [source] [destination]
+
+   Example: mv old_name.txt new_name.txt
+
+***********************************************
+
+4. pwd - Print the current working directory
+
+   Syntax: pwd
+
+   Example: pwd
+
+***********************************************
+
+5. rm - Remove files or directories
+
+   Syntax: rm [options] [file/directory]
+
+   Example: rm -r old_folder
+
+***********************************************
+
+6. cd - Change the current directory
+
+   Syntax: cd [directory]
+
+   Example: cd /home/user/Documents
+
+***********************************************
+
+7. whoami - Display the current logged-in user
+
+   Syntax: whoami
+
+   Example: whoami
+
+***********************************************
+
+8. clear - Clear the terminal screen
+
+   Syntax: clear
+
+   Example: clear
+
+***********************************************
+
+9. cat - Display the contents of a file
+
+   Syntax: cat [file_name]
+
+   Example: cat sample.txt
+
+***********************************************
+
+10. tail - Display the last few lines of a file
+
+    Syntax: tail -n [number] [file_name]
+
+    Example: tail -5 log.txt
+
+***********************************************
+
+11. echo - Print text to the terminal
+
+    Syntax: echo [text]
+
+    Example: echo "Hello, World!"
+
+***********************************************
+
+12. cp - Copy files and directories
+
+    Syntax: cp [source] [destination]
+
+    Example: cp file1.txt /backup/
+
+****************************************************
+
+13. touch - Create an empty file or update timestamp
+
+    Syntax: touch [file_name]
+
+    Example: touch newfile.txt
+
+****************************************************
+
+14. df - Display disk space usage
+
+    Syntax: df -h
+
+    Example: df -h
+
+****************************************************
+
+15. du - Show disk usage of files and directories
+
+    Syntax: du -sh [directory]
+
+    Example: du -sh /var/log
+
+****************************************************
+
+16. grep - Search for a pattern in a file
+
+    Syntax: grep [pattern] [file_name]
+
+    Example: grep "error" log.txt
+
+****************************************************
+
+17. sed - Stream editor for modifying text
+
+    Syntax: sed 's/old/new/g' [file_name]
+
+    Example: sed 's/Linux/Unix/g' file.txt
+
+****************************************************
+
+18. awk - Pattern scanning and processing language
+
+    Syntax: awk '{print $1}' [file_name]
+
+    Example: awk '{print $2}' data.txt
+
+****************************************************
+
+19. alias - Create shortcuts for commands
+
+    Syntax: alias [shortcut]='[command]'
+
+    Example: alias ll='ls -lah'
+
+****************************************************
+
+20. history - Show command history
+
+    Syntax: history
+
+    Example: history | grep mkdir
